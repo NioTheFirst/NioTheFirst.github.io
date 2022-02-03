@@ -7,7 +7,9 @@ CV(https://www.google.com)
  Email: bzhangprogramming@gmail.com
  
  Discord: ItsNio#9708
+
+ ![This is me!](https://user-images.githubusercontent.com/72953251/152267180-6cc7e19d-bc92-40cd-bafb-e2cdfd373eb1.jpg)
   
 ![Pumpkin_Fast_Zombie_Animated](https://user-images.githubusercontent.com/72953251/152265973-d0486df6-e0cb-4f82-996d-6d61feb32364.gif)
 
-Haha Zombie go brrrr
+
