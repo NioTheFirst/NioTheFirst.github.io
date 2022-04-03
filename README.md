@@ -31,6 +31,7 @@ NHS: Accepted into National Honor Society [Picture here]
 Prometheus Sci Bowl: Eliminated first round
 
 USACO Open - Didn't pass, recieved 750 out of the 800 required points
+    (Note: I feel hella depressed)
 
 CV(https://www.google.com)
 
