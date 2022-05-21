@@ -50,6 +50,7 @@ Waiting for the Kingdom Death Summer Shop Update, I missed the Spring Update by 
 I should probably start adding dates to this updates.
 
 5/21/22 Running in the rain is the best [Picture here]
+        Bugs are the coolest in any game, WarHammer 40k, StartCraft, MTG, etc. [Picture here]
 
 CV(https://www.google.com)
 
