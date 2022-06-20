@@ -45,7 +45,9 @@ Ended my track season w/ a 5:08 mile, not yet sub 5, but close.
         Bugs are the coolest in any game, WarHammer 40k, StartCraft, MTG, etc. [Picture here]
 
 ##6/20/22 
-Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). Included is a POC of that contract and an explanation:
+Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). 
+![Payment :D](file:///C:/Users/Brian%20Zhang/Other%20stuff/Downloads/firstpayment.png)
+Included is a POC of that contract and an explanation:
 
 ```solidity= 
 const ethers = hre.ethers;
