@@ -163,7 +163,8 @@ async function main() {
 main().then(() => process.exit(0)).catch((error) => {
     console.error(error);
     process.exit(1);
-});```
+});
+```
 
 the gist is that Azuro Protocol is a betting site, and betters can either place bets on events such as games, sports, etc, or place money into a reward pool, called the liquidity pool. Excess money from bets is placed into the pool, and if a bet needs more money, that is taken from the pool. Pool placers, or Liquidity poolers (LP) earn the percentage of the pool that they put in. 
 
