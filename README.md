@@ -163,6 +163,7 @@ the gist is that Azuro Protocol is a betting site, and betters can either place 
 The bug was that an LP could see when bets would lose money in the pool, and could withdraw their input in the pool before the pool lost money, thus saving them from the monetary loss. This could be done by Front-Running the contract, simply providing more gas for a call so that it is prioritized over other calls.
 
 This is a really interesting bug, as I learned that function calls can be exploited due to gas loading.
+______________________________________________________________________________
 
 CV(https://www.google.com)
 
