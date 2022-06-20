@@ -46,7 +46,7 @@ Ended my track season w/ a 5:08 mile, not yet sub 5, but close.
 
 ##6/20/22 
 Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). 
-![Payment :D](file:///C:/Users/Brian%20Zhang/Other%20stuff/Downloads/firstpayment.png)
+![Payment :D](https://www.dropbox.com/s/tpbt4thzoq7lvvf/firstpayment.png?dl=0)
 Included is a POC of that contract and an explanation:
 
 ```solidity= 
