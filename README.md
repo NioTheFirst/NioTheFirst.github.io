@@ -44,7 +44,8 @@ Ended my track season w/ a 5:08 mile, not yet sub 5, but close.
 5/21/22 Running in the rain is the best [Picture here]
         Bugs are the coolest in any game, WarHammer 40k, StartCraft, MTG, etc. [Picture here]
 
-6/20/22 Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). Included is a POC of that contract and an explanation:
+##6/20/22 
+Recently starting auditing smart contracts on immunefi with user @izhuer. Today, I just recieved my first payout from auditing Azuro Procotol(https://azuro.org/). Included is a POC of that contract and an explanation:
 
 ```solidity= 
 const ethers = hre.ethers;
