@@ -181,6 +181,8 @@ In my spare time, I have also begun auditing in the Code4rena competition. Gener
 
 It is a contract made to split ERC721 tokens, which are things like pictures, or objects, which there only exists one of, into ERC20 tokens, which are similar to coins, and multiple of one token can exist at one time.
 
+______________________________________________________________________________
+
 
 CV(https://www.google.com)
 
