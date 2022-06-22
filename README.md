@@ -174,11 +174,12 @@ This is a really interesting bug, as I learned that function calls can be exploi
 ______________________________________________________________________________
 
 ## 6/21/22
-    In my spare time, I have also begun auditing in the Code4rena competition. Generally, these competitions are easier to audit. The contract I am currently working on is this one:
+
+In my spare time, I have also begun auditing in the Code4rena competition. Generally, these competitions are easier to audit. The contract I am currently working on is this one:
 
 ![Contest](https://www.dropbox.com/s/jvfx780n90bdvxu/nibbl.png?dl=0&raw=1)
 
-    It is a contract made to split ERC721 tokens, which are things like pictures, or objects, which there only exists one of, into ERC20 tokens, which are similar to coins, and multiple of one token can exist at one time.
+It is a contract made to split ERC721 tokens, which are things like pictures, or objects, which there only exists one of, into ERC20 tokens, which are similar to coins, and multiple of one token can exist at one time.
 
 
 CV(https://www.google.com)
