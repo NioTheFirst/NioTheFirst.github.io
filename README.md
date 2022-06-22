@@ -183,6 +183,20 @@ It is a contract made to split ERC721 tokens, which are things like pictures, or
 
 ______________________________________________________________________________
 
+## 6/22/22
+
+Fractionalization is the process of locking in an ERC721 token and creating ERC20 tokens representing ownership of the NFT. For Nibbl, there is a valuation-driven fractionalization process to buyout an ERC721 token. It also helps in auditing to determine which contract inherit what, for example, NibblVault in the Nibbl contract represents an ERC20 token, used to represent owenership of the ERC721. This is what the Nibbl contract aims to do.
+
+Here is an explanation of the surface-level actions of the Nibbl contract:
+
+The Nibble Contract enables an owner, or curator, to lock in an ERC721 token in a Nibbl vault. The curator also provides a fee to do this, an in turn, is minted a certain amount of Nibbl tokens in return. Other people can choose to "buy" this token, resulting in an amount minted based on the primary and secondary curves of the contract. Vice versa, buyers can "sell" their Nibbl tokens, resulting in a refund and the burning of the Nibbl tokens. 
+
+Anyone can initiate a buyout at any point by calling the buyout function with a deposit based on the valuation of the vault. The valuation is defined as the number of Nibbl tokens minted multiplied by the value of the Nibbl tokens. After a preset period of time, the user who initated the buyout function will gain ownership of the ERC721 token. Other users can choose to stop the buyout by increasing the valuation of the vault by a preset percentage. This is done by buying Nibbl tokens.
+
+Once a buyout ends, Nibbl holders may redeem their Nibbl tokens for a percentage of the total amount earned by the vault from the buying. The new owner of the ERC721 token can also redeem their token, as well. 
+
+No matter what, the owner of the ERC721 token will earn money through fees that apply to every transaction that occurs within a vault from begining to end.
+______________________________________________________________________________
 
 CV(https://www.google.com)
 
