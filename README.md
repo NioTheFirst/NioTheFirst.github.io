@@ -196,7 +196,22 @@ Anyone can initiate a buyout at any point by calling the buyout function with a 
 Once a buyout ends, Nibbl holders may redeem their Nibbl tokens for a percentage of the total amount earned by the vault from the buying. The new owner of the ERC721 token can also redeem their token, as well. 
 
 No matter what, the owner of the ERC721 token will earn money through fees that apply to every transaction that occurs within a vault from begining to end.
+
+This seems like a pretty solid contract. It's short, as well. Short contracts usually are not as breakable as longer ones. 
 ______________________________________________________________________________
+
+## 6/23/22
+
+Today I was exposed to a double attack. Essentially, this is one of the most exploitable attacks which almost everyone should check first when auditing contracts. Essentially, it has to do with the way that the solidity ```approve``` function works. 
+
+Imagine User Bob allows User Alice $50. Then, imagine if User Bob wants to change that allowance to $30 instead. A double attack would be when Bob goes to call the allowance command, Alice frontruns, sending that $50 elsewhere. This allows ALice to have an addition $30 to spend, in total, $80, which is far more than Bob's ideal allowance of $30.
+
+Also, sandwhich attacks are where once a certain function is called by a victim or a contract, a malicious user will frontrun something in front of the function call, and then call something after the function call, hence affecting the way that the function interacts with the blockchain.
+______________________________________________________________________________
+
+## 6/24/22
+
+When looking at a contract, once you understand, think that you are any one of the many roles that a contract provides, like owner, user, maintainer, validator ... 
 
 CV(https://www.google.com)
 
