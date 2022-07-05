@@ -215,7 +215,7 @@ When looking at a contract, once you understand, think that you are any one of t
 
 ______________________________________________________________________________
 
-## ![7/5/22](https://hackmd.io/nrDLrEnDTz-CSCnz-PBu_Q?both)
+## [7/5/22](https://hackmd.io/nrDLrEnDTz-CSCnz-PBu_Q?both)
 
 
 CV(https://www.google.com)
