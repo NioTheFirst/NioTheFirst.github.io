@@ -213,6 +213,11 @@ ______________________________________________________________________________
 
 When looking at a contract, once you understand, think that you are any one of the many roles that a contract provides, like owner, user, maintainer, validator ... 
 
+______________________________________________________________________________
+
+## ![7/5/22](https://hackmd.io/nrDLrEnDTz-CSCnz-PBu_Q?both)
+
+
 CV(https://www.google.com)
 
  Email: bzhangprogramming@gmail.com
