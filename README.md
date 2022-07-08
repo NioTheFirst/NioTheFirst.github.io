@@ -217,6 +217,8 @@ ______________________________________________________________________________
 
 ## [7/5/22](https://hackmd.io/nrDLrEnDTz-CSCnz-PBu_Q?both)
 ## [7/6/22](https://hackmd.io/lpQyCmHpSkiNn9YLEqWWhQ?view)
+## [7/7/22](https://hackmd.io/r5_FEOQGSjeQBD5GEAgUtg)
+## [7/8/22](https://hackmd.io/vg1mkSg1QaiOKtwYhaKXVg)
 
 
 CV(https://www.google.com)
